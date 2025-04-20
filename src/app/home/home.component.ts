@@ -9,15 +9,15 @@ import { HousingLocation } from '../housinglocation';
   imports: [CommonModule, HousingLocationComponent],
   template: `
   <section>
-    <form>
-      <input type="text" placeholder="Filter by city">
-      <button class="primary" type="button">Search</button>
+    <form class="search-form">
+      <input type="text" placeholder="Filter by city" #filter>
+      <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
     </form>
   </section>
   <section class="results">
     <!-- Loop for array in HousingService using template in HousingLocationComponent -->
     <app-housing-location
-      *ngFor="let housingLocation of housingLocationList"
+      *ngFor="let housingLocation of filteredLocationList"
       [housingLocation]="housingLocation">
     </app-housing-location>
   </section>
@@ -29,8 +29,24 @@ export class HomeComponent {
   housingLocationList: HousingLocation[] = [];
   // inject service
   housingService: HousingService = inject(HousingService);
+  // filter results: values that match the search criteria entered by the user
+  filteredLocationList: HousingLocation[] = [];
+  // event handler for form button 
+  filterResults(text: string) {
+    if (!text) {
+      this.filteredLocationList = this.housingLocationList;
+      return;
+    }
+  
+    this.filteredLocationList = this.housingLocationList.filter(
+      housingLocation => housingLocation?.city.toLowerCase().includes(text.toLowerCase())
+    );
+  }
 
 constructor() {
   this.housingLocationList = this.housingService.getAllHousingLocations();
+  // filter results
+  this.filteredLocationList = this.housingLocationList;
+
 }
 }

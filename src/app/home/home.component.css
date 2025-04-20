@@ -1,3 +1,7 @@
+.search-form {
+  display: flex;
+  justify-content: center;
+}
 .results {
     display: grid;
     column-gap: 14px;
