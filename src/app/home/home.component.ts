@@ -15,6 +15,7 @@ import { HousingLocation } from '../housinglocation';
     </form>
   </section>
   <section class="results">
+    <!-- Loop for array in HousingService using template in HousingLocationComponent -->
     <app-housing-location
       *ngFor="let housingLocation of housingLocationList"
       [housingLocation]="housingLocation">
@@ -24,8 +25,10 @@ import { HousingLocation } from '../housinglocation';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  // empty array to store the housing locations
   housingLocationList: HousingLocation[] = [];
-housingService: HousingService = inject(HousingService);
+  // inject service
+  housingService: HousingService = inject(HousingService);
 
 constructor() {
   this.housingLocationList = this.housingService.getAllHousingLocations();

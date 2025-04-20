@@ -113,9 +113,13 @@ export class HousingService {
   getAllHousingLocations(): HousingLocation[] {
     return this.housingLocationList;
   }
-  
+  // used in DetailsComponent to display a specific housing listing.
   getHousingLocationById(id: number): HousingLocation | undefined {
     return this.housingLocationList.find(housingLocation => housingLocation.id === id);
+  }
+  // show form data in console after submitting
+  submitApplication(firstName: string, lastName: string, email: string) {
+    console.log(`Homes application received: firstName: ${firstName}, lastName: ${lastName}, email: ${email}.`);
   }
 
   constructor() { }

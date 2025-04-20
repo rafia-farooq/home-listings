@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { HousingLocation } from '../housinglocation';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-housing-location',
-  imports: [ RouterLink, RouterOutlet],
+  imports: [ RouterLink ],
   template: `
   <section class="listing">
     <img class="listing-photo" [src]="housingLocation.photo" alt="Exterior photo of {{housingLocation.name}}">
@@ -15,5 +15,6 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './housing-location.component.css'
 })
 export class HousingLocationComponent {
+  // Data passed from parent component
   @Input() housingLocation!: HousingLocation;
 }

@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterModule} from '@angular/router';
-import { HomeComponent } from './home/home.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HomeComponent, RouterModule],
+  imports: [RouterOutlet, RouterModule],
   template: `
   <main>
     <a [routerLink]="['/']">
@@ -13,6 +12,7 @@ import { HomeComponent } from './home/home.component';
       </header>
     </a>
     <section class="content">
+      <!-- This is a placeholder, Angular will render the component for the current route -->
       <router-outlet></router-outlet>
     </section>
   </main>

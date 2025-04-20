@@ -38,7 +38,14 @@
   li {
     list-style-type: none;
   }
-  
+
+  .listing-apply {
+    background-color: rgb(253, 242, 227);
+    border-radius: 20px;
+    padding: 20px 30px;
+    width: 30%;
+  }
+
   .listing-apply .section-heading {
     font-size: 18pt;
     margin-bottom: 15px;
